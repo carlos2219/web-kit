@@ -1,0 +1,14 @@
+node_modules
+dist
+*.local
+*.log
+.DS_Store
+
+# Private material: never in git, never on the site
+privado/
+
+# Personal Claude Code overrides
+.claude/settings.local.json
+
+# Design-loop screenshots
+.shots/

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "web-kit",
+  "description": "Personal website-building pipeline for Claude Code.",
+  "owner": { "name": "carlos2219" },
+  "plugins": [
+    {
+      "name": "web-kit",
+      "description": "Anti-slop website pipeline with template, skills and edit-time checks.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

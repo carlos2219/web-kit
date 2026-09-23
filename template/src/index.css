@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* web-kit:placeholder — tokens come from DESIGN.md (design-system skill). Components use only these tokens. */
+@theme {
+  --color-paper: #ffffff;
+  --color-ink: #18181b;
+  --color-muted: #71717a;
+  --color-line: #3f3f46;
+  --color-accent: #d4d4d8;
+
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-display: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+body {
+  @apply bg-ink text-paper font-sans antialiased;
+}
+
+@utility section-title {
+  @apply font-display text-[32px] leading-[1.1] font-medium text-paper;
+}
+
+@utility page-title {
+  @apply font-display text-[40px] leading-[1] font-medium text-paper sm:text-[56px];
+}
