@@ -7,6 +7,16 @@ description: Create or update a site's DESIGN.md from reference brands, and impl
 
 `DESIGN.md` is the contract every component, animation, and generated asset answers to. A site without one drifts toward AI defaults: indigo gradients, three generic cards, system fonts. The job is to **synthesize** an identity from references. Cloning one brand is not the job.
 
+## 0. Let the user choose a direction
+
+If the user has no references (usually they won't), don't ask for any. Propose them:
+
+1. From the brief, pick **3 contrasting directions** that all suit the audience. For example: sober and technical, warm and close, bold and editorial. Base each one on 1–2 real references: getdesign.md slugs (`npx getdesign@latest list`) or well-designed sites in the same niche.
+2. Show each direction as a name, one sentence ("se siente como…"), what it would look like (colors, type, mood), and a screenshot of its main reference taken with the claude-in-chrome tools, or at least the link.
+3. Ask with AskUserQuestion: the 3 directions plus "Mezclar" (they say what they like from each). Put your recommendation first.
+
+The chosen references go through step 1.
+
 ## 1. Collect references into `docs/references/`
 
 - **getdesign.md slug:** run `npx getdesign@latest add <slug>`. It writes `./DESIGN.md`. Immediately move it to `docs/references/<slug>.md`.

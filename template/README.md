@@ -54,3 +54,16 @@ Términos prohibidos específicos de esta marca van en `docs/copy-flags.json` co
 ## 8. Pendientes
 
 - web-kit:placeholder
+
+## 9. Presupuesto y servicios
+
+Nivel actual: web-kit:placeholder (gratis / bajo / medio). Opciones y precios de referencia: skill `web-kit:new-site` → `options.md`.
+
+| Necesidad | Elección actual | Notas |
+|---|---|---|
+| Hosting | Cloudflare Pages (gratis) | URL: pendiente de publicar |
+| Dominio | `<slug>.pages.dev` | |
+| Contacto | web-kit:placeholder | |
+| Formulario | — | |
+| Analítica | — | |
+| Imágenes y animación | CSS/SVG + fotos propias | |

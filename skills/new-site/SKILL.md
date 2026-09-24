@@ -1,87 +1,84 @@
 ---
 name: new-site
-description: Build a complete marketing website from zero, or resume one in progress, with the web-kit pipeline. The steps are brief, scaffold, DESIGN.md, spec and copy, pilot section with design loop, the rest of the pages, generated assets, and launch checks. Use it when the user wants to start a new site ("nuevo sitio", "otra web", "landing para X", "arranquemos el sitio de…"), asks "what's next" in a web-kit site, or runs /web-kit:new-site. This skill is the plan for building the site, so don't run a separate brainstorming or plan skill for it.
+description: Take the user from a website idea to a published site, or resume one in progress, with the web-kit pipeline. The pipeline asks for information and feedback progressively and adapts to the budget, from completely free to low-cost upgrades like a custom domain or generated animations. Use it when the user wants to start a new site ("nuevo sitio", "tengo una idea para una web", "landing para X", "arranquemos el sitio de…"), asks "what's next" or "¿qué sigue?" in a web-kit site, or runs /web-kit:new-site. This skill is the plan for building the site, so don't run a separate brainstorming or plan skill for it.
 ---
 
 # New site pipeline
 
-The goal is a site that looks designed by a studio, not by AI, and that takes days rather than weeks to build. The pipeline gets its speed from three human checkpoints (brief, spec, pilot). Between them you work autonomously. It gets its quality from deciding the system first (README, DESIGN.md, spec) and building second, with deterministic checks on every edit.
+The goal is a site that looks designed by a studio, not by AI, and that works properly on any budget. The user may not be a web developer, so you guide them: you propose, they choose or correct. You ask for more as each decision becomes relevant, never all up front.
+
+## How to talk with the user
+
+- **Propose, don't interrogate.** Draft from what you know, then ask "¿es así o lo cambio?". Correcting a draft is easier than answering a blank question.
+- **Use AskUserQuestion** with 2–4 options, and put your recommendation first, marked "(Recomendado)". Ask 1–3 questions per turn, and only the ones the next step needs. The user can always pick "Other" to write their own answer.
+- **Keep it simple.** No jargon. When a term is unavoidable, explain it in half a sentence: "dominio (la dirección tipo tunegocio.com)".
+- **Show, don't describe.** When asking for design feedback, show screenshots (and the reference next to them). Turn vague feedback ("no me convence") into concrete options: more sober or bolder, the colors, the typography, the spacing, the image.
+- **Money:** read [options.md](options.md). Never sign up, buy, or spend credits without an explicit yes.
 
 ## Resume or start
 
-Run the state check first. Every phase ends in a file, so the files on disk tell you where you are:
+Every phase ends in a file, so check which ones exist to know where you are. Tell the user in one line which phase you're in and what comes next.
 
 | Phase | Done when |
 |---|---|
-| 1 Brief + scaffold | `src/content/site.js` exists and `README.md` has no `web-kit:placeholder` |
-| 2 Design system | `DESIGN.md` exists and `src/index.css` has no placeholder |
-| 3 Spec + copy | `docs/site.md` covers every page with copy in every language, and the user approved it |
+| 1 Idea + scaffold | `src/content/site.js` exists and `README.md` has no `web-kit:placeholder` |
+| 2 Design direction | `DESIGN.md` exists and `src/index.css` has no placeholder |
+| 3 Content | `docs/site.md` covers every page with copy in every language, and the user approved it |
 | 4 Pilot | Home hero, nav and footer pass `web-kit:design-loop`, and the user approved them |
-| 5 Pages | Every route in `docs/site.md` is in `src/router.js` and implemented |
-| 6 Assets | Every asset slot in `docs/site.md` is filled and logged in `docs/assets.md` |
-| 7 Launch | `node <kit>/scripts/check.mjs launch` and `npm run check` pass |
+| 5 Pages | Every route in `docs/site.md` is implemented, and the user saw each page |
+| 6 Visuals | Every `asset:` slot in `docs/site.md` is filled and logged in `docs/assets.md` |
+| 7 Publish | `node <kit>/scripts/check.mjs launch` passes and the site is live |
 
-`<kit>` is the web-kit root, two levels above this skill's base directory (`<base>/../..`). Tell the user in one line which phase you're in, then continue from there. Commit at the end of each phase.
+`<kit>` is the web-kit root, two levels above this skill's base directory (`<base>/../..`). Commit at the end of each phase.
 
-## Phase 1: Brief and scaffold (checkpoint 1)
+## Phase 1: From idea to brief
 
-Ask everything in one message, as a numbered list the user can answer in one go. Accept pasted documents, links, or "you decide".
+1. If the user hasn't described the idea, ask for it in 1–2 sentences. That's all you need to begin.
+2. **Round 1** (AskUserQuestion, with options inferred from the idea):
+   - Main goal: get contacts or quotes, sell or book, show a portfolio, inform (event, local business).
+   - The one action the site asks for: WhatsApp, form, schedule a call, buy, or visit/call.
+   - Languages.
+   - Budget: "Gratis total" / "Bajo: dominio propio (~10–15 USD/año)" / "Medio: dominio + imágenes y animaciones generadas" / "Decido después". Recommend "Gratis total" to start, since upgrading later is easy.
+3. **Draft the brief** in plain Spanish (not the README yet). Cover who it's for, their problem, why this offer and not the alternative, what the site asks them to do, and a proposed tone. Also propose a name if they don't have one. Ask "¿qué corregirías?". Iterate until they say it's right.
+4. **Round 2, only what's still missing:** real facts you must not invent (services, experience, location, contact details), and anything that must never appear (prices, client names, claims without evidence). Private material goes in `privado/`, and nothing from it ever reaches the site.
+5. **Scaffold:** `node <kit>/scripts/new-site.mjs <dir> --name "<Brand>" --langs es,en` (default `<dir>`: a sibling of the current directory, named after the brand slug). Work inside `<dir>` from here on.
+6. Fill in `README.md` from the approved brief: every placeholder, including §9 with the chosen options from options.md. Turn tone into 3–5 rules, each with a do/don't example. Put brand-specific banned terms in `docs/copy-flags.json`. If the languages aren't `es,en`, the copy check lists what to add or drop in `site.js`.
 
-1. Brand name and folder (default: sibling of the current directory, slug of the name).
-2. What it is, in one sentence. Who buys, and what their pain is, in their own words.
-3. The one action the site asks for (the call to action) and what happens after it.
-4. Languages (the first one is the main language) and the pages they picture.
-5. 2–3 visual references. These can be getdesign.md slugs (`npx getdesign list`), URLs of sites they admire, or `DESIGN.md` files. Also ask what each one contributes.
-6. Anything that must never appear, such as prices, client names, or claims without evidence. Ask whether they have private material. It goes in `privado/`, and nothing from it ever reaches the site.
+## Phase 2: Design direction
 
-Then scaffold:
+Run `web-kit:design-system`. It shows the user 3 visual directions to choose from, then builds the system from the one they pick.
 
-```bash
-node <kit>/scripts/new-site.mjs <dir> --name "<Brand>" --langs es,en
-```
+## Phase 3: Content
 
-Work inside `<dir>` from here on. Fill in `README.md` from the answers: replace every placeholder. Turn tone into 3–5 concrete rules, each with a do/don't example. Put brand-specific banned terms in `docs/copy-flags.json` as `[["regex","reason"]]`. If the languages aren't `es,en`, the copy check lists every field in `site.js` to add or drop.
+Write `docs/site.md`:
 
-Show the user the README sections for positioning, the call to action, and tone. Proceed once they approve.
+- **Site map:** one idea per page. Keep it small. A one-page site is a valid answer for a basic site. Five focused pages beat ten thin ones. Pages without real content yet go under "Futuro".
+- **Structure:** global elements, then each page split into sections, in the order pain, offer, proof, how it works, call to action.
+- **Copy:** every section gets a `Clave | <LANG> | …` table with the final copy in every language, plus `title`/`description` per page. Follow `web-kit:site-copy`.
+- **Visual slots:** mark each one `asset: <what it shows>`. With a free budget, plan the visuals in CSS/SVG or around the user's own photos.
 
-## Phase 2: Design system
+Show the user the site map and each page's headline, in their language. Ask for corrections. Proceed once they approve. From here on, edits go into the spec first, then into `site.js`.
 
-Run `web-kit:design-system`. No checkpoint here. The pilot is where the user judges the design, on a real page instead of on tokens.
+## Phase 4: Pilot
 
-## Phase 3: Spec and copy (checkpoint 2)
+Build only the Layout (nav, footer, and a global call-to-action block if the spec has one) and the Home hero. Run `web-kit:design-loop` until they pass. Show the user desktop and mobile screenshots next to the reference. Ask for feedback with concrete options.
 
-Write `docs/site.md` with the site map (one idea per page), the global elements, and each page split into sections. Every section gets a table with columns `Clave | <LANG> | …` holding the final copy in every language, plus the page `title`/`description`. Mark each visual slot as `asset: <what it shows>`. Follow `web-kit:site-copy` for wording. Structure pages the classic way: pain, then offer, then proof, then how it works, then the call to action.
-
-Keep the site small. Five focused pages beat ten thin ones. Leave out pages that have no real content yet, like case studies without cases. List them under "Futuro".
-
-Present a condensed view to the user: the site map, plus each page's hero copy in the main language. Proceed once they approve. Edits after this point go into the spec first, then into `site.js`.
-
-## Phase 4: Pilot (checkpoint 3)
-
-Build only the Layout (nav, footer, and any global call-to-action block) and the Home hero. Add their copy to `site.js` with `web-kit:site-copy`. Run `web-kit:design-loop` on them until they pass. Then show the user desktop and mobile screenshots of the hero, next to the reference.
-
-Everything else inherits the pilot's decisions, so iterate here, not later. Proceed once they approve.
+Everything else inherits the pilot's decisions. Iterate here until they like it.
 
 ## Phase 5: Pages
 
-For each page in the spec:
+For each page: add the route in `src/router.js` and `App.jsx` (and in `NAV` in `Layout.jsx` if it belongs in the navigation), add its copy to `site.js`, build it section by section by reusing the pilot's components, and run one `web-kit:design-loop` pass.
 
-1. Add the route to `src/router.js` and `App.jsx`, and to `NAV` in `Layout.jsx` if the spec puts it in the navigation.
-2. Add the page's copy to `site.js`.
-3. Build it section by section. Reuse the pilot's components and patterns before you create new ones.
-4. Run one pass of `web-kit:design-loop` per page.
+After each page, show the user a screenshot and ask one question: "¿Algo que cambiar en esta página?" (options: "Está bien, sigue" (Recomendado) / "Cambiar textos" / "Cambiar diseño"). With 4 or more pages, you may build them in parallel with subagents, one page per agent. Give each agent this Phase 5, `DESIGN.md`, and the pilot components. Then show all the pages together.
 
-Pages don't depend on each other. With 4 or more pages, you may build them in parallel with subagents, one page per agent. Give each agent this skill's Phase 5, `DESIGN.md`, and the pilot components as the pattern to follow.
+## Phase 6: Visuals
 
-## Phase 6: Assets
+Run `web-kit:assets` for each `asset:` slot. It follows the budget in README §9.
 
-Run `web-kit:assets` for every `asset:` slot in the spec. Until an asset exists, the layout keeps a sized placeholder, so the page doesn't shift when the asset arrives.
+## Phase 7: Publish
 
-## Phase 7: Launch
+1. `node <kit>/scripts/check.mjs launch`, then `npm run check`. Fix everything they report.
+2. Run a final `web-kit:design-loop` over every page, at desktop and mobile width, in every language.
+3. Run `web-kit:publish`.
 
-1. `node <kit>/scripts/check.mjs launch` checks for placeholders, copy parity, slop terms, design rules, and meta for every route. Fix everything it reports.
-2. `npm run check` runs lint, tests, and the build.
-3. Run a final `web-kit:design-loop` over every page, at desktop and mobile width, in every language.
-4. Deployment: static hosting on Vercel, Netlify, or Cloudflare Pages. Build command `npm run build`, output folder `dist`. Add the SPA fallback so direct links work: `public/_redirects` with `/* /index.html 200` for Netlify or Cloudflare, or `vercel.json` rewrites for Vercel.
-
-Finish by running `web-kit:retro`, so this site makes the next one better.
+Finish with `web-kit:retro`, so this site makes the next one better. Later, when the user wants to improve the site (a domain, a form, animations, a new page), re-enter the phase that matches the request.

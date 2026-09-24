@@ -20,3 +20,7 @@ Hecho con el plugin **web-kit**: el flujo completo está en la skill `web-kit:ne
 ## Verificación
 
 Los hooks de web-kit revisan cada edición (lint, tokens, copy). Antes de dar un cambio por terminado: `npm run check`, y revisar visualmente en todos los idiomas y en móvil (skill `web-kit:design-loop`).
+
+## Publicar y mejorar
+
+Publicar o actualizar el sitio: skill `web-kit:publish` (Cloudflare Pages, gratis). Presupuesto y servicios contratados: `README.md` §9. El usuario puede no ser desarrollador: habla simple, propone y pide corrección, y nunca gastes dinero ni crees cuentas sin su sí.

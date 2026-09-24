@@ -10,12 +10,15 @@ En Claude Code, desde la carpeta donde quieras crear el sitio:
 /web-kit:new-site
 ```
 
-Responde la entrevista de una vez. Después el pipeline avanza solo y te pide aprobación en tres puntos: el **brief**, la **spec con el copy** y el **piloto** (el hero y la navegación). Si cortas la sesión, abre Claude Code en el sitio y corre `/web-kit:new-site` otra vez: detecta la fase por los archivos y continúa.
+Empieza con la idea en una o dos frases. Claude te pregunta de a poco: propone borradores y te da opciones para elegir; tú corriges. Te muestra capturas de cada paso y te pide opinión. Nunca gasta dinero ni crea cuentas sin preguntarte. Todo tiene una opción gratis, y las mejoras de pago (dominio, animaciones generadas, etc.) se agregan cuando quieras, sin rehacer el sitio. El menú de opciones está en `skills/new-site/options.md`.
+
+Si cortas la sesión, abre Claude Code en el sitio y corre `/web-kit:new-site` otra vez: detecta la fase por los archivos y continúa. También sirve para mejorar un sitio ya publicado.
 
 | Skill | Qué hace |
 |---|---|
-| `new-site` | Orquesta el pipeline: brief → estructura base → DESIGN.md → spec y copy → piloto → páginas → assets → lanzamiento. |
-| `design-system` | Arma `DESIGN.md` a partir de referencias (getdesign.md, archivos o URLs) y lo convierte en tokens, fuentes y favicon. |
+| `new-site` | Orquesta el pipeline: idea → brief → dirección visual → contenido → piloto → páginas → visuales → publicación. |
+| `design-system` | Te muestra 3 direcciones visuales para elegir y arma `DESIGN.md`, tokens, fuentes y favicon (también acepta referencias de getdesign.md o URLs). |
+| `publish` | Publica gratis en Cloudflare Pages y actualiza con un comando. Agrega dominio, correo, formulario y analítica cuando decidas. |
 | `design-loop` | Toma capturas en escritorio y móvil, las compara con la referencia, puntúa con `rubric.md` y corrige, hasta que pase. |
 | `site-copy` | Sincroniza el copy entre spec → `site.js` en N idiomas, con reglas de redacción. |
 | `assets` | Dirección de arte → prompts para Higgsfield → optimización → registro en `docs/assets.md`. |
@@ -43,7 +46,7 @@ Al terminar cada fase o sitio, corre `/web-kit:retro`. Por cada edición del kit
 .claude-plugin/   plugin.json + marketplace.json (marketplace local)
 hooks/            on-edit.cjs: lint y checks tras cada Write/Edit
 scripts/          check.mjs (copy | design | launch), new-site.mjs (crea la estructura base)
-skills/           las 6 skills
+skills/           las 7 skills
 template/         sitio base: Vite + React 19 + Tailwind v4, router sin dependencias, copy en N idiomas
 ```
 

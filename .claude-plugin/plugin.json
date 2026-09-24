@@ -1,6 +1,6 @@
 {
   "name": "web-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Anti-slop website pipeline: brief → DESIGN.md → spec and copy → pilot + design loop → generated assets → launch checks. Vite + React + Tailwind template included.",
   "author": { "name": "carlos2219" }
 }

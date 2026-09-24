@@ -7,7 +7,14 @@ description: Art-direct, generate, optimize, and log a web-kit site's images and
 
 Generic icons and stock visuals are the fastest tell of an AI-made site. Every asset is generated for this brand, from one art direction, so they look like a set.
 
-## Setup (once per machine)
+## Budget first
+
+Read `README.md` §9.
+
+- **Free budget:** use only medium 1 below (CSS/SVG), the user's own photos (ask for them, and say what kind of photo works best), and SVG illustrations drawn in code. This is a complete, professional result, not a lesser version.
+- **Paid budget:** before generating anything, tell the user which assets you plan to generate and roughly how many credits they'll use. Wait for a yes.
+
+## Setup (once per machine, only with a paid budget)
 
 ```bash
 npm i -g @higgsfield/cli
