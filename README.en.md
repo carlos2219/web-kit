@@ -13,18 +13,31 @@ web-kit is a [Claude Code](https://claude.com/claude-code) plugin that turns "ma
 - **Free by default.** Sites are published on Cloudflare Pages at no cost. A custom domain, generated animations, and other paid upgrades can be added later without rebuilding, and never without asking you.
 - **Every site improves the next.** Your corrections become rules.
 
+## Quick start
+
+```bash
+claude plugin marketplace add carlos2219/web-kit   # install (once)
+claude plugin install web-kit@web-kit
+mkdir my-site && cd my-site && claude --chrome      # open in the site folder
+```
+
+Inside Claude Code, type `/web-kit:new-site` and describe your idea. Claude guides you through the rest.
+
+| Command | Use it to |
+|---|---|
+| `/web-kit:new-site` | Start a site, resume it, or ask what's next |
+| `/web-kit:design-loop` | Polish something that doesn't look right |
+| `/web-kit:design-system` | Change colors, typography, or style |
+| `/web-kit:site-copy` | Change or translate text |
+| `/web-kit:assets` | Prepare your photos and video, or generate images and animations |
+| `/web-kit:publish` | Publish, update, connect a domain, get found on Google |
+| `/web-kit:retro` | When done: turn your corrections into kit improvements |
+
+No need to memorize them. Plain requests work too: *"it looks dull"*, *"change the home title"*, *"publish the changes"*.
+
 ## Requirements
 
 Claude Code, Node.js 22+, and Git. Recommended: the Claude in Chrome extension (run `claude --chrome`), so Claude can see and judge the site. Optional: the [Higgsfield CLI](https://higgsfield.ai/cli) for generated images and video.
-
-## Install
-
-```bash
-claude plugin marketplace add carlos2219/web-kit
-claude plugin install web-kit@web-kit
-```
-
-Restart Claude Code.
 
 ## Use
 
@@ -42,9 +55,7 @@ Run `/web-kit:new-site` again at any time to resume, or just ask for changes ("p
 
 ## What's inside
 
-Seven skills: `new-site`, `design-system`, `design-loop`, `site-copy`, `assets`, `publish`, and `retro`.
-
-An edit-time hook (active only in web-kit sites) blocks typical AI-slop: Tailwind's default palette, off-system colors, emoji used as icons, hardcoded text, incomplete translations, and filler phrases.
+Seven skills (the commands above), plus an edit-time hook. The hook (active only in web-kit sites) blocks typical AI-slop: Tailwind's default palette, off-system colors, emoji used as icons, hardcoded text, incomplete translations, and filler phrases.
 
 Every route is prerendered to its own HTML file with title, description, and social-preview tags, plus `sitemap.xml` and `robots.txt`. The site template uses Vite, React 19, Tailwind v4, and Oxlint, with multi-language copy kept separate from components.
 

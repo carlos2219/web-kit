@@ -5,6 +5,30 @@ No necesitas saber programar, y puede costarte cero.
 
 [English](README.en.md) · [Guía paso a paso](docs/guia.md)
 
+## Inicio rápido
+
+```bash
+claude plugin marketplace add carlos2219/web-kit   # instalar (una vez)
+claude plugin install web-kit@web-kit
+mkdir mi-sitio && cd mi-sitio && claude --chrome    # abrir en la carpeta del sitio
+```
+
+Dentro de Claude Code escribe `/web-kit:new-site` y cuenta tu idea. Claude te guía por todo lo demás.
+
+| Comando | Úsalo para |
+|---|---|
+| `/web-kit:new-site` | Empezar un sitio, retomarlo o saber qué sigue |
+| `/web-kit:design-loop` | Pulir algo que no te convence visualmente |
+| `/web-kit:design-system` | Cambiar colores, tipografía o estilo |
+| `/web-kit:site-copy` | Cambiar o traducir textos |
+| `/web-kit:assets` | Preparar tus fotos y videos, o generar imágenes y animaciones |
+| `/web-kit:publish` | Publicar, actualizar, conectar un dominio, aparecer en Google |
+| `/web-kit:retro` | Al terminar: convierte tus correcciones en mejoras del kit |
+
+No hace falta memorizarlos. Pedir en lenguaje normal también funciona: *"se ve muy apagado"*, *"cambia el título del inicio"*, *"publica los cambios"*, *"ya compré un dominio"*.
+
+## Por qué web-kit
+
 web-kit es un plugin para [Claude Code](https://claude.com/claude-code). Convierte "hazme una página web" en un proceso guiado:
 
 - **Claude te pregunta de a poco.** Te propone borradores y opciones para elegir, y tú corriges. No hay formularios largos ni jerga.
@@ -21,26 +45,12 @@ web-kit es un plugin para [Claude Code](https://claude.com/claude-code). Convier
 | [Node.js](https://nodejs.org) 22 o superior | Construir el sitio | Sí |
 | [Git](https://git-scm.com) | Guardar versiones | Sí |
 | Extensión Claude in Chrome (iniciar con `claude --chrome`) | Que Claude vea el sitio y lo compare con la referencia | Recomendado |
+| [ffmpeg](https://ffmpeg.org) (`winget install Gyan.FFmpeg` · `brew install ffmpeg`) | Preparar tus fotos y videos para la web | Si usas material propio |
 | [Higgsfield](https://higgsfield.ai/cli) | Generar imágenes y animaciones | Solo con presupuesto |
-
-## Instalación
-
-```bash
-claude plugin marketplace add carlos2219/web-kit
-claude plugin install web-kit@web-kit
-```
-
-Reinicia Claude Code. Dentro de una sesión también funciona `/plugin marketplace add carlos2219/web-kit`.
 
 ## Uso
 
-Abre Claude Code en la carpeta donde quieras crear el sitio y escribe:
-
-```
-/web-kit:new-site
-```
-
-Cuéntale la idea en una o dos frases. Claude te guía por estas fases:
+Al escribir `/web-kit:new-site`, Claude te guía por estas fases:
 
 | Fase | Qué te pide Claude | Qué obtienes |
 |---|---|---|
@@ -70,17 +80,9 @@ Precios de referencia a septiembre de 2026. Claude verifica el precio vigente an
 
 ## Qué incluye
 
-| Skill | Qué hace |
-|---|---|
-| `new-site` | Guía todo el proceso, desde la idea hasta la publicación, y retoma donde quedaste |
-| `design-system` | Direcciones visuales, `DESIGN.md`, colores, fuentes y favicon (acepta [getdesign.md](https://getdesign.md) y URLs) |
-| `design-loop` | Capturas en escritorio y móvil, evaluación con [rúbrica](skills/design-loop/rubric.md) contra la referencia y correcciones |
-| `site-copy` | Textos en N idiomas, sincronizados entre la spec y el código, con reglas anti-jerga |
-| `assets` | Tus fotos y videos listos para la web, animaciones CSS/SVG, imágenes generadas con Higgsfield e imagen de vista previa para compartir |
-| `publish` | Publicación gratis y actualizaciones; Google (Search Console, Business Profile); dominio, correo, formulario y analítica |
-| `retro` | Convierte tus correcciones en reglas del kit |
+Siete skills (los comandos del inicio rápido), más un **chequeo automático tras cada edición** (solo en sitios web-kit) bloquea los errores típicos del diseño hecho por IA: la paleta por defecto de Tailwind, colores fuera del sistema, emojis usados como íconos, texto escrito directo en el código, traducciones incompletas y frases como "soluciones de vanguardia". Antes de publicar, `check.mjs launch` revisa que no queden huecos sin llenar y que cada página tenga título y descripción.
 
-Además, un **chequeo automático tras cada edición** (solo en sitios web-kit) bloquea los errores típicos del diseño hecho por IA: la paleta por defecto de Tailwind, colores fuera del sistema, emojis usados como íconos, texto escrito directo en el código, traducciones incompletas y frases como "soluciones de vanguardia". Antes de publicar, `check.mjs launch` revisa que no queden huecos sin llenar y que cada página tenga título y descripción.
+Cada página se compila como HTML propio, con su título, descripción y vista previa. Así los enlaces compartidos por WhatsApp o redes muestran la página correcta, y se generan `sitemap.xml` y `robots.txt` para Google.
 
 La plantilla del sitio usa Vite, React 19, Tailwind v4 y Oxlint, con un router sin dependencias y el copy separado del código.
 
@@ -98,8 +100,6 @@ docs/guia.md      guía paso a paso para principiantes
 ## Contribuir
 
 Los issues y pull requests son bienvenidos, sobre todo reglas nuevas para `scripts/check.mjs` o la [rúbrica](skills/design-loop/rubric.md) que atrapen errores reales. Si lo modificas para ti: haz fork, clónalo y regístralo con `claude plugin marketplace add <ruta-del-clon>`. La skill `retro` edita tu copia. Tras cada cambio, sube `version` en `.claude-plugin/plugin.json` y corre `claude plugin marketplace update web-kit` y `claude plugin update web-kit@web-kit`.
-
-Cada página se compila como HTML propio, con su título, descripción y vista previa. Así los enlaces compartidos por WhatsApp o redes muestran la página correcta, y se generan `sitemap.xml` y `robots.txt` para Google.
 
 ## Licencia
 

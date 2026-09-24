@@ -1,5 +1,7 @@
 # Guía paso a paso
 
+> ¿Solo quieres los comandos? Están en el [inicio rápido del README](../README.md#inicio-rápido).
+
 Para quien nunca ha hecho un sitio web. Lleva unos 20 minutos de preparación, una sola vez, y después cada sitio arranca con un comando.
 
 ## 1. Preparar tu computadora (una sola vez)
