@@ -1,53 +1,105 @@
 # web-kit
 
-Plugin de Claude Code para construir sitios web anti-slop de forma repetible. Nació de enso (`../engineering_services`).
+**De una idea a un sitio web publicado, con calidad de estudio, conversando con Claude Code.**
+No necesitas saber programar, y puede costarte cero.
+
+[English](README.en.md) · [Guía paso a paso](docs/guia.md)
+
+web-kit es un plugin para [Claude Code](https://claude.com/claude-code). Convierte "hazme una página web" en un proceso guiado:
+
+- **Claude te pregunta de a poco.** Te propone borradores y opciones para elegir, y tú corriges. No hay formularios largos ni jerga.
+- **Ves lo que se construye.** Te muestra capturas de cada paso y te pide opinión.
+- **Diseño con criterio, no "hecho por IA".** Parte de referencias reales, define un sistema visual (`DESIGN.md`) y compara el resultado contra la referencia hasta que esté a la altura.
+- **Gratis por defecto.** Publica en Cloudflare Pages sin costo. El dominio propio, las animaciones generadas y demás extras de pago se agregan cuando quieras, sin rehacer el sitio, y nunca sin preguntarte.
+- **Mejora con cada sitio.** Lo que corrijas se convierte en reglas para el siguiente.
+
+## Qué necesitas
+
+| | Para qué | Obligatorio |
+|---|---|---|
+| [Claude Code](https://claude.com/claude-code) | Es donde trabajas | Sí |
+| [Node.js](https://nodejs.org) 22 o superior | Construir el sitio | Sí |
+| [Git](https://git-scm.com) | Guardar versiones | Sí |
+| Extensión Claude in Chrome (iniciar con `claude --chrome`) | Que Claude vea el sitio y lo compare con la referencia | Recomendado |
+| [Higgsfield](https://higgsfield.ai/cli) | Generar imágenes y animaciones | Solo con presupuesto |
+
+## Instalación
+
+```bash
+claude plugin marketplace add carlos2219/web-kit
+claude plugin install web-kit@web-kit
+```
+
+Reinicia Claude Code. Dentro de una sesión también funciona `/plugin marketplace add carlos2219/web-kit`.
 
 ## Uso
 
-En Claude Code, desde la carpeta donde quieras crear el sitio:
+Abre Claude Code en la carpeta donde quieras crear el sitio y escribe:
 
 ```
 /web-kit:new-site
 ```
 
-Empieza con la idea en una o dos frases. Claude te pregunta de a poco: propone borradores y te da opciones para elegir; tú corriges. Te muestra capturas de cada paso y te pide opinión. Nunca gasta dinero ni crea cuentas sin preguntarte. Todo tiene una opción gratis, y las mejoras de pago (dominio, animaciones generadas, etc.) se agregan cuando quieras, sin rehacer el sitio. El menú de opciones está en `skills/new-site/options.md`.
+Cuéntale la idea en una o dos frases. Claude te guía por estas fases:
 
-Si cortas la sesión, abre Claude Code en el sitio y corre `/web-kit:new-site` otra vez: detecta la fase por los archivos y continúa. También sirve para mejorar un sitio ya publicado.
+| Fase | Qué te pide Claude | Qué obtienes |
+|---|---|---|
+| 1. Idea | Objetivo, acción principal (WhatsApp, formulario…), idiomas y presupuesto, con opciones para elegir. Después corriges un borrador del brief. | La directiva de marca en `README.md` y el proyecto creado |
+| 2. Dirección visual | Elegir entre 3 direcciones con capturas de referencia | `DESIGN.md`: colores, tipografía, animación y dirección de arte |
+| 3. Contenido | Aprobar el mapa del sitio y los titulares | `docs/site.md`, con todo el texto en cada idioma |
+| 4. Piloto | Opinar sobre el inicio del sitio en escritorio y móvil | Un hero pulido que marca el estilo del resto |
+| 5. Páginas | Revisar la captura de cada página | El sitio completo |
+| 6. Visuales | Aprobar qué se genera y cuánto cuesta (si hay presupuesto) | Imágenes y animaciones coherentes entre sí |
+| 7. Publicación | Crear una cuenta gratis de Cloudflare cuando te lo indique | El sitio en línea en `tusitio.pages.dev` |
+
+¿Cortaste a mitad de camino? Vuelve a escribir `/web-kit:new-site`: detecta en qué fase quedó y sigue. Para cambios posteriores, basta con pedirlos: *"cambia el texto del inicio"*, *"publica los cambios"*, *"ya compré un dominio"*.
+
+## Presupuesto
+
+| Necesidad | Gratis | Mejora de pago (opcional) |
+|---|---|---|
+| Publicar | Cloudflare Pages | — |
+| Dirección web | `tusitio.pages.dev` | Dominio propio, unos 10–15 USD al año |
+| Correo `hola@tudominio` | Reenvío a tu Gmail | Enviar desde el dominio, unos 1–7 USD al mes |
+| Contacto | WhatsApp o formulario con Web3Forms (250 mensajes al mes) | — |
+| Estadísticas | Cloudflare Web Analytics | — |
+| Imágenes y animación | Código (CSS/SVG) y tus fotos | Higgsfield, desde unos 9 USD al mes |
+
+Precios de referencia a septiembre de 2026. Claude verifica el precio vigente antes de recomendarte algo.
+
+## Qué incluye
 
 | Skill | Qué hace |
 |---|---|
-| `new-site` | Orquesta el pipeline: idea → brief → dirección visual → contenido → piloto → páginas → visuales → publicación. |
-| `design-system` | Te muestra 3 direcciones visuales para elegir y arma `DESIGN.md`, tokens, fuentes y favicon (también acepta referencias de getdesign.md o URLs). |
-| `publish` | Publica gratis en Cloudflare Pages y actualiza con un comando. Agrega dominio, correo, formulario y analítica cuando decidas. |
-| `design-loop` | Toma capturas en escritorio y móvil, las compara con la referencia, puntúa con `rubric.md` y corrige, hasta que pase. |
-| `site-copy` | Sincroniza el copy entre spec → `site.js` en N idiomas, con reglas de redacción. |
-| `assets` | Dirección de arte → prompts para Higgsfield → optimización → registro en `docs/assets.md`. |
-| `retro` | Convierte cada corrección tuya en una regla, skill o parte de la plantilla, para el próximo sitio. |
+| `new-site` | Guía todo el proceso, desde la idea hasta la publicación, y retoma donde quedaste |
+| `design-system` | Direcciones visuales, `DESIGN.md`, colores, fuentes y favicon (acepta [getdesign.md](https://getdesign.md) y URLs) |
+| `design-loop` | Capturas en escritorio y móvil, evaluación con [rúbrica](skills/design-loop/rubric.md) contra la referencia y correcciones |
+| `site-copy` | Textos en N idiomas, sincronizados entre la spec y el código, con reglas anti-jerga |
+| `assets` | Dirección de arte → prompts para Higgsfield → optimización → registro de prompts |
+| `publish` | Publicación gratis y actualizaciones, más dominio, correo, formulario y analítica |
+| `retro` | Convierte tus correcciones en reglas del kit |
 
-Automático en cada edición (hook), solo en sitios web-kit: oxlint, tokens de diseño (sin paleta por defecto, hex sueltos, emojis ni texto hardcodeado) y copy (idiomas completos, sin jerga de IA ni términos vetados de la marca).
-Antes de publicar: `node scripts/check.mjs launch` en el sitio.
+Además, un **chequeo automático tras cada edición** (solo en sitios web-kit) bloquea los errores típicos del diseño hecho por IA: la paleta por defecto de Tailwind, colores fuera del sistema, emojis usados como íconos, texto escrito directo en el código, traducciones incompletas y frases como "soluciones de vanguardia". Antes de publicar, `check.mjs launch` revisa que no queden huecos sin llenar y que cada página tenga título y descripción.
 
-## Instalación (una vez por máquina)
-
-```bash
-claude plugin marketplace add "C:\Users\carlos\OneDrive\CH\Profesional\web-kit"
-claude plugin install web-kit@web-kit
-```
-
-Opcional: Higgsfield (`npm i -g @higgsfield/cli`, luego `higgsfield auth login` y `npx skills add higgsfield-ai/skills`), ffmpeg (`winget install Gyan.FFmpeg`) y la extensión Claude in Chrome, que usa el design loop.
-
-## Mejorar el kit
-
-Al terminar cada fase o sitio, corre `/web-kit:retro`. Por cada edición del kit: sube `version` en `.claude-plugin/plugin.json`, haz commit, y luego corre `claude plugin marketplace update web-kit` y `claude plugin update web-kit@web-kit`.
+La plantilla del sitio usa Vite, React 19, Tailwind v4 y Oxlint, con un router sin dependencias y el copy separado del código.
 
 ## Estructura
 
 ```
-.claude-plugin/   plugin.json + marketplace.json (marketplace local)
-hooks/            on-edit.cjs: lint y checks tras cada Write/Edit
-scripts/          check.mjs (copy | design | launch), new-site.mjs (crea la estructura base)
+.claude-plugin/   manifiesto del plugin y marketplace
+hooks/            chequeo automático tras cada edición
+scripts/          check.mjs (copy | design | launch) · new-site.mjs (crea el proyecto)
 skills/           las 7 skills
-template/         sitio base: Vite + React 19 + Tailwind v4, router sin dependencias, copy en N idiomas
+template/         sitio base que se copia en cada proyecto nuevo
+docs/guia.md      guía paso a paso para principiantes
 ```
 
-Límites conocidos: el sitio es una SPA renderizada en el cliente, así que los meta tags por página se aplican con JS. Si el SEO o las previsualizaciones en redes sociales se vuelven críticos, agrega prerender.
+## Contribuir
+
+Los issues y pull requests son bienvenidos, sobre todo reglas nuevas para `scripts/check.mjs` o la [rúbrica](skills/design-loop/rubric.md) que atrapen errores reales. Si lo modificas para ti: haz fork, clónalo y regístralo con `claude plugin marketplace add <ruta-del-clon>`. La skill `retro` edita tu copia. Tras cada cambio, sube `version` en `.claude-plugin/plugin.json` y corre `claude plugin marketplace update web-kit` y `claude plugin update web-kit@web-kit`.
+
+**Límite conocido:** los sitios son aplicaciones de una sola página, así que el título y la descripción de cada página se aplican con JavaScript. Para sitios donde el SEO sea crítico, conviene agregar prerender.
+
+## Licencia
+
+[MIT](LICENSE)

@@ -1,6 +1,21 @@
 {
   "name": "web-kit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Anti-slop website pipeline: brief → DESIGN.md → spec and copy → pilot + design loop → generated assets → launch checks. Vite + React + Tailwind template included.",
-  "author": { "name": "carlos2219" }
+  "author": {
+    "name": "carlos2219",
+    "url": "https://github.com/carlos2219"
+  },
+  "homepage": "https://github.com/carlos2219/web-kit",
+  "repository": "https://github.com/carlos2219/web-kit",
+  "license": "MIT",
+  "keywords": [
+    "website",
+    "design",
+    "landing-page",
+    "anti-slop",
+    "react",
+    "tailwind",
+    "cloudflare-pages"
+  ]
 }

@@ -28,7 +28,7 @@ Is it **generic** (it would happen on any site) or **specific** (it's this brand
 | Specific, checkable | The site's `docs/copy-flags.json` |
 | Specific, judgment | The site's `README.md` or `DESIGN.md` |
 
-`<kit>` is the web-kit source repo, two levels above this skill's base directory (`<base>/../..`). If that path is inside the plugin cache (`.claude/plugins/cache`), edit the source repo instead: `C:\Users\carlos\OneDrive\CH\Profesional\web-kit`.
+`<kit>` is the web-kit source repo, two levels above this skill's base directory (`<base>/../..`). If that path is inside the plugin cache (`.claude/plugins/cache`), edits there would be lost on the next update, so edit the user's clone of the web-kit repo instead. Ask for its path once and save it to memory. If they have no clone, offer `gh repo fork carlos2219/web-kit --clone`, then register it as their marketplace with `claude plugin marketplace add <clone path>`. Generic lessons are also worth proposing upstream as a pull request.
 
 Prefer a check over a sentence, and one sharp sentence over a paragraph. Don't add a rule for a one-off.
 

@@ -2,7 +2,10 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "web-kit",
   "description": "Personal website-building pipeline for Claude Code.",
-  "owner": { "name": "carlos2219" },
+  "owner": {
+    "name": "carlos2219",
+    "url": "https://github.com/carlos2219"
+  },
   "plugins": [
     {
       "name": "web-kit",

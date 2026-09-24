@@ -43,7 +43,7 @@ Build every prompt from `DESIGN.md` → Art direction, in this order, so the who
 ## Deliver
 
 - Put files in `public/assets/<page>-<slot>.<ext>` with descriptive names.
-- **Images:** request the final size from the model (hero 2560 px wide at most). If `ffmpeg` is available (`winget install Gyan.FFmpeg`), convert to WebP: `ffmpeg -i in.png -c:v libwebp -quality 82 out.webp`. Aim for under 300 KB for a hero. Use `<img>` with `width` and `height` (no layout shift), `alt` text from `site.js` in every language (decorative images get `alt=""`), and `loading="lazy"` for anything below the fold.
+- **Images:** request the final size from the model (hero 2560 px wide at most). If `ffmpeg` is available (Windows `winget install Gyan.FFmpeg`, macOS `brew install ffmpeg`, Linux `apt install ffmpeg`), convert to WebP: `ffmpeg -i in.png -c:v libwebp -quality 82 out.webp`. Aim for under 300 KB for a hero. Use `<img>` with `width` and `height` (no layout shift), `alt` text from `site.js` in every language (decorative images get `alt=""`), and `loading="lazy"` for anything below the fold.
 - **Video:** export mp4 (H.264) plus a poster frame: `ffmpeg -i in.mp4 -vcodec libx264 -crf 28 -an -movflags +faststart out.mp4` and `ffmpeg -i in.mp4 -frames:v 1 poster.webp`. Aim for under 2 MB. Use `<video autoplay muted loop playsinline poster=…>`. Under `prefers-reduced-motion`, show only the poster.
 - **Log it.** Append a row to `docs/assets.md` (create it with this header if missing): `| File | Slot | Model | Prompt | Date |`. With the prompt logged, any asset can be regenerated or restyled later.
 
