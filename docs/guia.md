@@ -44,6 +44,7 @@ Abre Claude Code en la carpeta del sitio y pide en lenguaje normal:
 | Subir los cambios | *"Publica los cambios"* |
 | Tu propio dominio | *"Quiero un dominio propio"*. Claude te muestra el precio y los pasos. |
 | Formulario de contacto | *"Agrega un formulario de contacto"* (gratis hasta 250 mensajes al mes) |
+| Aparecer en Google | *"Quiero aparecer en Google"*. Claude te guía con Search Console y, si atiendes una zona, con tu perfil de Google Business (gratis). |
 | Ver cuántas visitas tienes | *"Activa las estadísticas"* (gratis) |
 | Imágenes o animaciones generadas | *"Quiero mejores imágenes para el inicio"*. Primero te dice cuánto costaría. |
 
@@ -52,6 +53,8 @@ Abre Claude Code en la carpeta del sitio y pide en lenguaje normal:
 **¿Cuánto cuesta?** El sitio publicado, nada. Pagas tu suscripción de Claude, y opcionalmente un dominio (unos 10–15 USD al año) o créditos de imágenes (Higgsfield, desde unos 9 USD al mes, y puedes pagar solo un mes).
 
 **¿Claude puede gastar mi dinero?** No. Nunca compra, crea cuentas ni gasta créditos sin tu confirmación explícita.
+
+**Tengo fotos y videos de mi trabajo, ¿sirven?** Son lo mejor que puedes poner. Guarda los originales en la carpeta `media-originals/` del sitio. Claude los comprime para la web y les quita los datos de ubicación GPS que traen las fotos de drones y celulares. Los videos largos se suben a YouTube y se muestran desde ahí.
 
 **¿El sitio es mío?** Sí. Todo el código queda en tu carpeta, versionado con Git, y puedes llevarlo a cualquier hosting.
 

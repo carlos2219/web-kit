@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "node --test",
-    "check": "oxlint --deny-warnings && node --test && vite build"
+    "check": "oxlint --deny-warnings && node --test && npm run build"
   },
   "dependencies": {
     "react": "^19.2.8",

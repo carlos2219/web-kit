@@ -35,8 +35,8 @@ Open Claude Code in the folder where the site should live, run `/web-kit:new-sit
 3. **Content:** approve the site map and the headlines, in every language.
 4. **Pilot:** give feedback on the home hero at desktop and mobile widths.
 5. **Pages:** review a screenshot of each page.
-6. **Visuals:** CSS/SVG and your photos if the budget is free, or Higgsfield assets if you approve the cost.
-7. **Publish:** free on Cloudflare Pages, with optional domain, email, form, and analytics.
+6. **Visuals:** your own photos and footage (compressed, GPS stripped), CSS/SVG motion, or Higgsfield assets if you approve the cost.
+7. **Publish:** free on Cloudflare Pages, plus getting found on Google (Search Console, Business Profile for local businesses), with optional domain, email, form, and analytics.
 
 Run `/web-kit:new-site` again at any time to resume, or just ask for changes ("publish the changes", "I bought a domain").
 
@@ -46,7 +46,7 @@ Seven skills: `new-site`, `design-system`, `design-loop`, `site-copy`, `assets`,
 
 An edit-time hook (active only in web-kit sites) blocks typical AI-slop: Tailwind's default palette, off-system colors, emoji used as icons, hardcoded text, incomplete translations, and filler phrases.
 
-The site template uses Vite, React 19, Tailwind v4, and Oxlint, with multi-language copy kept separate from components.
+Every route is prerendered to its own HTML file with title, description, and social-preview tags, plus `sitemap.xml` and `robots.txt`. The site template uses Vite, React 19, Tailwind v4, and Oxlint, with multi-language copy kept separate from components.
 
 ## Contributing
 

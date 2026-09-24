@@ -40,7 +40,11 @@ Every phase ends in a file, so check which ones exist to know where you are. Tel
    - Languages.
    - Budget: "Gratis total" / "Bajo: dominio propio (~10–15 USD/año)" / "Medio: dominio + imágenes y animaciones generadas" / "Decido después". Recommend "Gratis total" to start, since upgrading later is easy.
 3. **Draft the brief** in plain Spanish (not the README yet). Cover who it's for, their problem, why this offer and not the alternative, what the site asks them to do, and a proposed tone. Also propose a name if they don't have one. Ask "¿qué corregirías?". Iterate until they say it's right.
-4. **Round 2, only what's still missing:** real facts you must not invent (services, experience, location, contact details), and anything that must never appear (prices, client names, claims without evidence). Private material goes in `privado/`, and nothing from it ever reaches the site.
+4. **Round 2, only what's still missing:**
+   - Real facts you must not invent: services, experience, contact details.
+   - **Local business?** If they serve a specific area or have a place, ask for the city or area, the phone or WhatsApp, and the hours. These feed the site and the Google Business Profile at publish time, and must match exactly.
+   - **Own material?** Photos or video of their work, team, or place. If they have any, ask them to put the originals in `media-originals/`. That material usually beats any generated image.
+   - Anything that must never appear: prices, client names, claims without evidence (certifications or permits they don't have yet). Private material goes in `privado/`, and nothing from it ever reaches the site.
 5. **Scaffold:** `node <kit>/scripts/new-site.mjs <dir> --name "<Brand>" --langs es,en` (default `<dir>`: a sibling of the current directory, named after the brand slug). Work inside `<dir>` from here on.
 6. Fill in `README.md` from the approved brief: every placeholder, including §9 with the chosen options from options.md. Turn tone into 3–5 rules, each with a do/don't example. Put brand-specific banned terms in `docs/copy-flags.json`. If the languages aren't `es,en`, the copy check lists what to add or drop in `site.js`.
 

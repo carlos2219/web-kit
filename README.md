@@ -63,7 +63,8 @@ Cuéntale la idea en una o dos frases. Claude te guía por estas fases:
 | Correo `hola@tudominio` | Reenvío a tu Gmail | Enviar desde el dominio, unos 1–7 USD al mes |
 | Contacto | WhatsApp o formulario con Web3Forms (250 mensajes al mes) | — |
 | Estadísticas | Cloudflare Web Analytics | — |
-| Imágenes y animación | Código (CSS/SVG) y tus fotos | Higgsfield, desde unos 9 USD al mes |
+| Aparecer en Google | Search Console y perfil de Google Business (negocios locales) | — |
+| Imágenes y animación | Tus fotos y videos (comprimidos, sin datos GPS), animaciones con código | Higgsfield, desde unos 9 USD al mes |
 
 Precios de referencia a septiembre de 2026. Claude verifica el precio vigente antes de recomendarte algo.
 
@@ -75,8 +76,8 @@ Precios de referencia a septiembre de 2026. Claude verifica el precio vigente an
 | `design-system` | Direcciones visuales, `DESIGN.md`, colores, fuentes y favicon (acepta [getdesign.md](https://getdesign.md) y URLs) |
 | `design-loop` | Capturas en escritorio y móvil, evaluación con [rúbrica](skills/design-loop/rubric.md) contra la referencia y correcciones |
 | `site-copy` | Textos en N idiomas, sincronizados entre la spec y el código, con reglas anti-jerga |
-| `assets` | Dirección de arte → prompts para Higgsfield → optimización → registro de prompts |
-| `publish` | Publicación gratis y actualizaciones, más dominio, correo, formulario y analítica |
+| `assets` | Tus fotos y videos listos para la web, animaciones CSS/SVG, imágenes generadas con Higgsfield e imagen de vista previa para compartir |
+| `publish` | Publicación gratis y actualizaciones; Google (Search Console, Business Profile); dominio, correo, formulario y analítica |
 | `retro` | Convierte tus correcciones en reglas del kit |
 
 Además, un **chequeo automático tras cada edición** (solo en sitios web-kit) bloquea los errores típicos del diseño hecho por IA: la paleta por defecto de Tailwind, colores fuera del sistema, emojis usados como íconos, texto escrito directo en el código, traducciones incompletas y frases como "soluciones de vanguardia". Antes de publicar, `check.mjs launch` revisa que no queden huecos sin llenar y que cada página tenga título y descripción.
@@ -98,7 +99,7 @@ docs/guia.md      guía paso a paso para principiantes
 
 Los issues y pull requests son bienvenidos, sobre todo reglas nuevas para `scripts/check.mjs` o la [rúbrica](skills/design-loop/rubric.md) que atrapen errores reales. Si lo modificas para ti: haz fork, clónalo y regístralo con `claude plugin marketplace add <ruta-del-clon>`. La skill `retro` edita tu copia. Tras cada cambio, sube `version` en `.claude-plugin/plugin.json` y corre `claude plugin marketplace update web-kit` y `claude plugin update web-kit@web-kit`.
 
-**Límite conocido:** los sitios son aplicaciones de una sola página, así que el título y la descripción de cada página se aplican con JavaScript. Para sitios donde el SEO sea crítico, conviene agregar prerender.
+Cada página se compila como HTML propio, con su título, descripción y vista previa. Así los enlaces compartidos por WhatsApp o redes muestran la página correcta, y se generan `sitemap.xml` y `robots.txt` para Google.
 
 ## Licencia
 

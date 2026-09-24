@@ -22,6 +22,7 @@ Vite + React 19 + Tailwind v4 · Oxlint · sin backend. `npm run dev` · `npm ru
 - Nombre / wordmark: web-kit:placeholder
 - Qué es, en una frase: web-kit:placeholder
 - Idiomas del sitio (el primero es el principal): web-kit:placeholder
+- Zona de servicio, teléfono/WhatsApp y horario (si es negocio local; deben coincidir con el perfil de Google): —
 
 ## 2. Audiencia y posicionamiento
 
@@ -66,4 +67,5 @@ Nivel actual: web-kit:placeholder (gratis / bajo / medio). Opciones y precios de
 | Contacto | web-kit:placeholder | |
 | Formulario | — | |
 | Analítica | — | |
+| Google (Search Console / Business Profile) | — | |
 | Imágenes y animación | CSS/SVG + fotos propias | |

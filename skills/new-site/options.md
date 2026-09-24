@@ -12,6 +12,8 @@ Record each decision in the site's `README.md` §9, "Presupuesto y servicios". T
 | **Main contact** | WhatsApp link (`https://wa.me/<number>?text=…`) or `mailto:`. No backend. | Not needed. | — |
 | **Contact form** | Web3Forms (250 submissions a month free, no backend). It's a `fetch` to their API with a public key. | Paid Web3Forms or Formspree plans, for more volume or file uploads. | Only if the free plan runs short. |
 | **Scheduling calls** | Cal.com or Google Calendar booking pages (free), linked or embedded. | — | — |
+| **Being found on Google** | Google Search Console (indexing + sitemap) and, for a local business, a Google Business Profile. Both are free. | — | — |
+| **Photos and video** | The user's own photos and footage, compressed with ffmpeg. Long reels go on YouTube or Vimeo. | — | — |
 | **Analytics** | Cloudflare Web Analytics: free, no cookies, no banner. | — | — |
 | **Fonts** | Google Fonts (OFL license, free for commercial use). | Commercial fonts, 20–200 USD each. | Rarely. A well-chosen Google font is enough. |
 | **Images** | The user's own photos, CSS/SVG compositions, illustrations drawn as SVG in code. | Higgsfield credits: plans from roughly 9–30 USD/month, or a single month to generate the whole site. | Hero, mascot, or signature visual, when the site competes on impact. |

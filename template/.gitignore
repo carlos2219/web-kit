@@ -10,5 +10,8 @@ privado/
 # Personal Claude Code overrides
 .claude/settings.local.json
 
+# Original photos/video before web compression (large; web versions go in public/assets/)
+media-originals/
+
 # Design-loop screenshots
 .shots/

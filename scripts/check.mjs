@@ -98,6 +98,8 @@ async function checkLaunch() {
   if (existsSync('src/router.js')) {
     const { ROUTES } = await import(pathToFileURL(resolve('src/router.js')))
     const { site, LANGS = ['es', 'en'] } = await import(pathToFileURL(resolve('src/content/site.js')))
+    if (!site.ogImage || !existsSync(join('public', site.ogImage)))
+      report('site.ogImage', `social preview image missing (public${site.ogImage ?? '/og.jpg'}, 1200×630): see the assets skill`)
     const seen = new Map()
     for (const [path, key] of Object.entries(ROUTES))
       for (const l of LANGS)

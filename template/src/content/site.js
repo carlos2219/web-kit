@@ -4,6 +4,10 @@ export const t = (obj, key, lang) => obj[`${key}_${lang}`]
 
 export const site = {
   brand: '__NAME__',
+  // Public address, set on first publish (e.g. 'https://name.pages.dev'). Enables canonical URLs and sitemap.xml.
+  url: '',
+  // Social preview image (1200×630, in public/). Shown when a link is shared on WhatsApp, LinkedIn, etc.
+  ogImage: '/og.jpg',
   // Per-page <title> and meta description, keyed like ROUTES in src/router.js.
   pages: {
     home: {
